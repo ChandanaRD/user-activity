@@ -25,7 +25,7 @@ SECRET_KEY = '&s9la!s1b%p%zh8n^68^dx#3!^ytzv2wa4mlraih!!i$5m6fmv'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'stark-journey-86565.herokuapp.com']
 
 
 # Application definition
