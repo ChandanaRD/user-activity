@@ -1,22 +1,22 @@
-# user-activity
+# User-Activity
 A Django application for user and activity model 
 
-# About Project
+## About Project
 This project uses sqlLite3 DB. 
 models -> User, ActivityPeriod
 template -> One view to display all users and activities in a json
 
-# Run the application
+## Run the application
 
-# migrate DB data
+#### Migrate DB data
 python manage.py migrate
-#Start Server
+#### Start Server
 python manage.py runserver
 
-# create data using shell
+## Create data using shell
 python manage.py shell
 
-# Generate data using Custom management command
+## Generate data using Custom management command
 python manage.py load_dummy_user_data
 
 * arguments: --users 1
