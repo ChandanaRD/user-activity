@@ -1,17 +1,6 @@
-import sys
-import random
-from datetime import date, timedelta
-
-from django.core.management.base import BaseCommand
-from django.db.models.base import ObjectDoesNotExist
-from django.contrib.auth.models import User
-
-
-from ...models import User, ActivityPeriod
-
 from django.core.management.base import BaseCommand
 
-from activities.data_factory import ActivityFactory, UserFactory
+from activities.data_factory import ActivityFactory
 
 
 class Command(BaseCommand):
@@ -19,9 +8,9 @@ class Command(BaseCommand):
 
     def add_arguments(self, parser):
         parser.add_argument('--users',
-            default=15,
-            type=int,
-            help='The number of fake users to create.')
+                            default=1,
+                            type=int,
+                            help='The number of fake users to create.')
 
     def handle(self, *args, **options):
         for _ in range(options['users']):
