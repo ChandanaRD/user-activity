@@ -18,21 +18,22 @@
             &nbsp;&nbsp;&nbsp;&nbsp;<span>tz: {{user.tz}}</span>
             <br/>
             <div>
-                &nbsp;&nbsp;&nbsp;&nbsp;activity_periods: [{
+                &nbsp;&nbsp;&nbsp;&nbsp;activity_periods: [
                 {{user.activities}}
-<!--                {% for activity in user.activities %}-->
-<!--                    <div class="indent" >-->
-<!--                        {{activity}}-->
-<!--                        {{activity.start_time}}-->
-<!--                        {{activity.end_time}}-->
-<!--                    </div>-->
-<!--                {% endfor %}-->
-            }]
+                <!--                {% for activity in user.activities %}-->
+                <!--                    <div class="indent" >-->
+                <!--                        {{activity}}-->
+                <!--                        {{activity.start_time}}-->
+                <!--                        {{activity.end_time}}-->
+                <!--                    </div>-->
+                <!--                {% endfor %}-->
+                ]
             </div>
+            <br/>
+            },
         </div>
     {% endfor %}
-    <br/>
-    ]}
+]
     <br/>
 }
 {% else %}
