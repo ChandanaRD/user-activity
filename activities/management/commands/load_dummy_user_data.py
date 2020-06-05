@@ -13,6 +13,7 @@ class Command(BaseCommand):
                             help='The number of fake users to create.')
 
     def handle(self, *args, **options):
+        print('executing!..')
         for _ in range(options['users']):
             ActivityFactory.create()
         return

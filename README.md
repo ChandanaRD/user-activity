@@ -16,7 +16,12 @@ python manage.py runserver
 ## Create data using shell
 python manage.py shell
 
-## Generate data using Custom management command
+## Generate data using Custom Management Command
+
+#### Open heroku bash
+heroku run bash -a user-activity-2020
+
+#### Run custom management command
 python manage.py load_dummy_user_data
 
 * arguments: --users 1

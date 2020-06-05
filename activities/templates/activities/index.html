@@ -1,9 +1,40 @@
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'activities/style.css' %}">
+
 {% if user_list %}
-    <ul>
-    {% for user in user_list %}
-        <li><a >{{ user }}</a></li>
+    {
+        <br/>
+        &nbsp; &nbsp; ok: {{ user_list.ok }}
+        <br/>
+        &nbsp; &nbsp; members: [{
+        <br/>
+    {% for user in user_list.members %}
+        <div class="indent" >
+            &nbsp;&nbsp;&nbsp;&nbsp;<span> id: {{user.id}} </span>
+            <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span>real_name: {{user.real_name}}</span>
+            <br/>
+            &nbsp;&nbsp;&nbsp;&nbsp;<span>tz: {{user.tz}}</span>
+            <br/>
+            <div>
+                &nbsp;&nbsp;&nbsp;&nbsp;activity_periods: [{
+                {{user.activities}}
+<!--                {% for activity in user.activities %}-->
+<!--                    <div class="indent" >-->
+<!--                        {{activity}}-->
+<!--                        {{activity.start_time}}-->
+<!--                        {{activity.end_time}}-->
+<!--                    </div>-->
+<!--                {% endfor %}-->
+            }]
+            </div>
+        </div>
     {% endfor %}
-    </ul>
+    <br/>
+    ]}
+    <br/>
+}
 {% else %}
     <p>No users are available.</p>
 {% endif %}
