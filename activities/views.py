@@ -6,10 +6,19 @@ from .models import User,ActivityPeriod
 
 
 def index(request):
-    user_list = User.objects.order_by('real_name')
-    print(user_list);
-
-    context = {'user_list': user_list}
+    response = {"ok": True, "members": []}
+    user_list = User.objects.all()
+    user_activity_list = []
+    for user in user_list:
+        user_data = user.data()
+        user_data['activities'] = []
+        activities = ActivityPeriod.objects.filter(user=user)
+        for activity in activities:
+            activity_data = activity.data()
+            user_data['activities']= activity_data
+        user_activity_list.append(user_data)
+    response['members'] = user_activity_list
+    context = {'user_list': response}
     return render(request, 'activities/index.html', context)
 
 #

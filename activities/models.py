@@ -6,8 +6,9 @@ class User(models.Model):
     real_name = models.CharField(max_length=200)
     tz = models.CharField(max_length=200)
 
-    def __str__(self):
-        return self.real_name
+    def data(self):
+        user_data = {'id': self.id, 'real_name': self.real_name, 'tz': self.tz}
+        return user_data
 
 
 class ActivityPeriod(models.Model):
@@ -15,5 +16,6 @@ class ActivityPeriod(models.Model):
     start_time = models.DateTimeField('Start time')
     end_time = models.DateTimeField('End time')
 
-    def __str__(self):
-        return self.start_time.__str__()
+    def data(self):
+        activity_data = {'user': self.user, 'start_time': self.start_time, 'end_time': self.end_time}
+        return activity_data
