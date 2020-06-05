@@ -15,26 +15,4 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         for _ in range(options['users']):
             ActivityFactory.create()
-
-# class Command(BaseCommand):
-#     args = 'username...'
-#
-#     def handle(self, *args, **options):
-#         if len(args) == 0:
-#             sys.stdout.write('You must specify a username.\n')
-#             sys.exit(1)
-#
-#         try:
-#             user = User.objects.get(real_name=args[0])
-#         except ObjectDoesNotExist:
-#             user = User.objects.create(real_name=args[0])
-#             user.id = 'ABC'+random(1000)+'XYZ'
-#             user.tz = 'America/Los_Angeles'
-#             user.activityperiod_set.create(start_time='2020-01-01 19:30+05:30', end_time='2020-02-01 20:30+05:30')
-#             user.save()
-#
-#             # Create an entry for the User Settings.
-#             User.objects.create(user=user).save()
-#
-#         # Delete existing data.
-#         User.objects.filter(user=user).delete()
+        return
