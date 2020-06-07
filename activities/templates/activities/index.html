@@ -3,48 +3,54 @@
 <link rel="stylesheet" type="text/css" href="{% static 'activities/style.css' %}">
 
 {% if user_list %}
+<div>
+    <span>{</span>
     {% for key,value in user_list.items %}
     {% ifequal key 'members' %}
-        <div class="indent">
-            {{key}}: [
-            <br/>
+    <div class="indent">
+        {{key}}: [
+        <br/>
         {% for user in value %}
-            <div>
-                    <span class="indent">{</span>
+        <div>
+            <span class="indent">{</span>
             {% for key1,value1 in user.items %}
             {% ifequal key1 'activity_periods' %}
+            <div class="indent">
+                <span class="indent">{{key1}}: [</span>
+                {% for activity in value1 %}
                 <div class="indent">
-                    <span class="indent">{{key1}}: [</span>
-                    {% for activity in value1 %}
-                    <div class="indent">
                     <span class="indent">{</span>
-                        {% for key2,value2 in activity.items %}
-                            <div class="indent">
-                                <span class="indent">{{ key2 }} : {{value2}},</span>
-                            </div>
-                        {% endfor%}
-                    <span class="indent">},</span>
+                    {% for key2,value2 in activity.items %}
+                    <div class="indent">
+                        <span class="indent">{{ key2 }} : {{value2}},</span>
                     </div>
+                    {% endfor%}
+                    <span class="indent">},</span>
+                </div>
                 {% endfor%}
                 <span class="indent">],</span>
-            {% else %}
+                {% else %}
                 <div class="indent">
                     <span class="indent">{{ key1 }} : {{value1}},</span>
                 </div>
-            {% endifequal %}
-            {% endfor%}
-                    <br/>
-                    <span >},</span>
+                {% endifequal %}
+                {% endfor%}
+                <br/>
+                <span>},</span>
             </div>
+            {% endfor%}
+            ]
+        </div>
+        {% else %}
+        <div class="indent">
+            <span>{{ key }} : {{value}},</span>
+        </div>
+        {% endifequal %}
         {% endfor%}
-    ]
+        <span>}</span>
     </div>
+
     {% else %}
-    <div class="indent">
-        <span >{{ key }} : {{value}},</span>
-    </div>
-    {% endifequal %}
-    {% endfor%}
-{% else %}
     <div class="indent">No users are available.</div>
-{% endif %}
+    {% endif %}
+</div>

@@ -1,18 +1,16 @@
-from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
-from django.template import loader
+from django.shortcuts import render
 
-from .models import User,ActivityPeriod
+from .models import User, ActivityPeriod
 
 
 def index(request):
     response = {"ok": True, "members": []}
-    user_list = User.objects.all()
+    user_list = User.objects.all().order_by('real_name')
     user_activity_list = []
     for user in user_list:
         user_data = user.data()
         user_data['activity_periods'] = []
-        activity_periods = ActivityPeriod.objects.filter(user=user)
+        activity_periods = ActivityPeriod.objects.filter(user=user).order_by('start_time')
         for activity in activity_periods:
             activity_data = activity.data()
             del activity_data["user"]
@@ -22,12 +20,4 @@ def index(request):
     context = {'user_list': response}
     return render(request, 'activities/index.html', context)
 
-#
-# def activity_period_list(request):
-#     return HttpResponse("You're looking at question %s.")
-#
-#
-# def user_activity(request, user_id):
-#     user = get_object_or_404(User, pk=user_id)
-#     return render(request, 'polls/user_activity.html', {'user': user})
 
