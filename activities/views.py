@@ -11,11 +11,12 @@ def index(request):
     user_activity_list = []
     for user in user_list:
         user_data = user.data()
-        user_data['activities'] = []
-        activities = ActivityPeriod.objects.filter(user=user)
-        for activity in activities:
+        user_data['activity_periods'] = []
+        activity_periods = ActivityPeriod.objects.filter(user=user)
+        for activity in activity_periods:
             activity_data = activity.data()
-            user_data['activities']= activity_data
+            del activity_data["user"]
+            user_data['activity_periods'].append(activity_data.copy())
         user_activity_list.append(user_data)
     response['members'] = user_activity_list
     context = {'user_list': response}
