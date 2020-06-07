@@ -1,6 +1,8 @@
 # User-Activity
 A Django application for user and activity model 
 
+Application is hosted on heroku: https://user-activity-2020.herokuapp.com/
+
 ## About Project
 This project uses sqlLite3 DB. 
 models -> User, ActivityPeriod
