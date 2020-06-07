@@ -4,5 +4,5 @@
 # Database
 *.sqlite3
 *.sql
-/staticfiles
 /db.sqlite3
+/staticfiles/
